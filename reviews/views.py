@@ -6,4 +6,4 @@ def index(request):
 
     name = request.GET.get('name') or 'World'
 
-    return HttpResponse(f'<h1>Hello {name}</h1>')
+    return render(request, 'base.html')
