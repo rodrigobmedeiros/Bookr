@@ -6,4 +6,8 @@ def index(request):
 
     name = request.GET.get('name') or 'World'
 
-    return render(request, 'base.html')
+    context = {
+        'name': name
+    }
+
+    return render(request, 'base.html', context)
