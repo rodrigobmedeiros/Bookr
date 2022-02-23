@@ -19,3 +19,18 @@ class Contributor(models.Model):
     first_names = models.CharField(max_length=50, help_text="The contributor's first name or names.")
     last_names = models.CharField(max_length=50, help_text="The contributor's last name or names.")
     email = models.EmailField(help_text="The contact email for the contributor.")
+
+class BookContributor(models.Model):
+    """Estabilish many to many relationship between Books and Contributors"""
+    class ContributionRole(models.TextChoices):
+        AUTHOR = 'AUTHOR', 'Author'
+        CO_AUTHOR = 'CO_AUTHOR', 'Co-Author'
+        EDITOR = 'EDITOR', 'Editor'
+
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    contributor = models.ForeignKey(Contributor, on_delete=models.CASCADE)
+    role = models.CharField(
+        verbose_name='The role this contributor had in the book.', 
+        choices=ContributionRole.choices, 
+        max_length=20
+    )
