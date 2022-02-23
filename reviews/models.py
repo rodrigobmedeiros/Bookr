@@ -1,4 +1,5 @@
 from django.contrib import auth
+from django.conf import settings
 from django.db import models
 
 class Publisher(models.Model):
@@ -42,5 +43,5 @@ class Review(models.Model):
     rating = models.IntegerField(help_text='The rating the reviewer has given.')
     date_created = models.DateTimeField(auto_now=True, help_text='The date and time the review was created.')
     date_edited = models.DateTimeField(null=True, help_text='The date and time the review was last edited.')
-    creator =  models.ForeignKey(auth.get_user_model(), on_delete=models.CASCADE)
+    creator =  models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE, help_text='The Bok that tis review is for.')
