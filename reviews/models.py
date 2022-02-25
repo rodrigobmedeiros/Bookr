@@ -30,7 +30,7 @@ class Contributor(models.Model):
     last_names = models.CharField(max_length=50, help_text="The contributor's last name or names.")
     email = models.EmailField(help_text="The contact email for the contributor.")
 
-    def __init__(self):
+    def __str__(self):
 
         return self.first_names
 
