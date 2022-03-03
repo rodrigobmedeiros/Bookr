@@ -24,7 +24,7 @@ class Command(BaseCommand):
 
         try:
             with open(options['csv']) as csvfile:
-                
+
                 model_data = csv.reader(csvfile)
             
                 for i, row in enumerate(model_data):
@@ -48,7 +48,7 @@ class Command(BaseCommand):
                     models[model_name].append(row_dict)
                     """
         except:
-            raise CommandError(f'File "{options["csv"]}" does not exist.')
+            raise CommandError(f'Verify the logic used to read and parse the file "{options["csv"]}".')
 
         for data_dict in models.get('Publisher', []):
             p, created = Publisher.objects.get_or_create(name=data_dict['publisher_name'], defaults={
