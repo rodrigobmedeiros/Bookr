@@ -29,10 +29,7 @@ class Command(BaseCommand):
             
                 for i, row in enumerate(model_data):
 
-                    print(row)
-
-                    """
-                    if max([len(cell.strip()) for cell in row[1:] + [1]]) == 0 and m.match(row[0]):
+                    if max([len(cell.strip()) for cell in row[1:] + ['']]) == 0 and m.match(row[0]):
                         model_name = m.match(row[0]).groups()[0]
                         models[model_name] = []
                         header = None
@@ -46,7 +43,7 @@ class Command(BaseCommand):
                     if set(row_dict.values()) == {''}:
                         continue 
                     models[model_name].append(row_dict)
-                    """
+
         except:
             raise CommandError(f'Verify the logic used to read and parse the file "{options["csv"]}".')
 
