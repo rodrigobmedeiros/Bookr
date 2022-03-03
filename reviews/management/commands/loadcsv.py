@@ -106,7 +106,7 @@ class Command(BaseCommand):
                 defaults={
                     'rating': data_dict['review_rating'],
                     'date_created': data_dict['review_date_created'],
-                    'data_edited': data_dict['review_date_edited']
+                    'date_edited': data_dict['review_date_edited']
                 }
             )
 
