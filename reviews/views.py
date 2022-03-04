@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.http import HttpResponse
-from models import Book
+from .models import Book
 from bookr.utils import average_rating
 
 def book_list(request):
@@ -30,4 +30,4 @@ def book_list(request):
 
     context = {'book_list': book_list}
 
-    return render(request, 'reviews.book_list.html')
+    return render(request, 'reviews/book_list.html')
