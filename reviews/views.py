@@ -1,8 +1,7 @@
-from django.http import HttpResponse
 from django.shortcuts import render
-from django.http import HttpResponse
+from .utils import average_rating
 from .models import Book
-from bookr.utils import average_rating
+
 
 def book_list(request):
 
