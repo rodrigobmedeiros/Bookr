@@ -12,11 +12,14 @@ def book_list(request):
     for book in books:
 
         reviews = book.review_set.all()
-
-        book_rating = average_rating([
-            review.rating 
-            for review in reviews
-        ])
+        
+        if reviews:
+            book_rating = average_rating([
+                review.rating 
+                for review in reviews
+            ])
+        else:
+            book_rating = None
 
         number_of_reviews = len(reviews)
 
@@ -30,4 +33,4 @@ def book_list(request):
 
     context = {'book_list': book_list}
 
-    return render(request, 'reviews/book_list.html')
+    return render(request, 'reviews/book_list.html', context=context)
