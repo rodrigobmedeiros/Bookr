@@ -33,3 +33,7 @@ def book_list(request):
     context = {'book_list': book_list}
 
     return render(request, 'reviews/book_list.html', context=context)
+
+def teste(request):
+
+    return render(request, 'reviews/example_bootstrap.html')
