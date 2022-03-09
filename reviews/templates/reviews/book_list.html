@@ -31,7 +31,7 @@
                 <!-- btn-sm -> define the size sm = small -->
                 <!-- active -> keep the dark appearence when button is pressed -->
                 <!-- when use buttons with <a> tags, include role="button" to appropriately convey their purpose to assistive technologies such as screen readers.-->
-                <a class="btn btn-primary btn-sm active" role="button" aria-pressed="true" href="#">Reviews</a>
+                <a class="btn btn-primary btn-sm active" role="button" aria-pressed="true" href="{% url 'book_details' item.book.id %}">Reviews</a>
             </li>
 
         {% endfor %}
