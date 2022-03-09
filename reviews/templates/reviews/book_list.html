@@ -1,27 +1,37 @@
 {% extends 'base.html' %}
 
 {% block content%}
-    <h1>Book Review Application</h1>
-    <hr>
-    <ul>
+    <ul class="list-group">
         {% for item in book_list %}
-
-            <li>
-                <span>Title: </span><span>{{ item.book.title}}</span>
+            <!-- class: list-group-item -> Make divisions between list items automatically -->
+            <li class="list-group-item">
+                <!-- class: text-info -> Highlight text information with a default light blue color -->
+                <span class="text-info">Title: </span><span>{{ item.book.title}}</span>
                 <br>
-                <span>Publisher: </span><span>{{ item.book.publisher}}</span>
+                <span class="text-info">Publisher: </span><span>{{ item.book.publisher}}</span>
                 <br>
-                <span>Publication Date: </span><span>{{ item.book.publication_date}}</span>
+                <span class="text-info">Publication Date: </span><span>{{ item.book.publication_date}}</span>
                 <br>
-                <span>Rating: </span><span>{{ item.book_rating}}</span>
+                <!-- class: badge badge-primary badge-pill -->
+                <!-- badge -> define you will have a badge around the text -->
+                <!-- badge-primary -> color definition, primary points to blue -->
+                <!-- badge-pill -> change the format of badge to pill (like a medicine pill =D) -->
+                <span class="text-info">Rating: </span><span class="badge badge-primary badge-pill">{{ item.book_rating}}</span>
                 <br>
-                <span>Number of reviews: </span><span>{{ item.number_of_reviews}}</span>
+                <span class="text-info">Number of reviews: </span><span>{{ item.number_of_reviews}}</span>
                 <br>
                 {% if item.book_rating is null %}
-                    <span>Provide a rating and write the first review for this book.</span>
+                    <!-- class: text-secondary -> Give to text a light grey color -->
+                    <span class="text-secondary">Provide a rating and write the first review for this book.</span>
                     <br>
                 {% endif %}
-                <br>
+                <!-- class: btn btn-primary btn-sm active -->
+                <!-- btn -> define that a button will be used -->
+                <!-- btn-primary -> color definition, primary points to blue -->
+                <!-- btn-sm -> define the size sm = small -->
+                <!-- active -> keep the dark appearence when button is pressed -->
+                <!-- when use buttons with <a> tags, include role="button" to appropriately convey their purpose to assistive technologies such as screen readers.-->
+                <a class="btn btn-primary btn-sm active" role="button" aria-pressed="true" href="#">Reviews</a>
             </li>
 
         {% endfor %}
