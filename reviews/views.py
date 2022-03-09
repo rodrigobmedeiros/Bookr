@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .utils import average_rating
 from .models import Book
 
@@ -34,6 +34,12 @@ def book_list(request):
 
     return render(request, 'reviews/book_list.html', context=context)
 
-def teste(request):
+def book_detail(request, id):
 
-    return render(request, 'reviews/example_bootstrap.html')
+    book = get_object_or_404(Book, pk=id)
+
+    context = {
+        'book': book
+    }
+
+    return render(request, 'reviews/book_detail.html', context=context)
