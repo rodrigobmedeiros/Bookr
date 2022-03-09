@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content%}
+    <h1>Book Details</h1>
+    <!-- class: list-group-item -> Make divisions between list items automatically -->
+    <hr>
+    <p>
+        <!-- class: text-info -> Highlight text information with a default light blue color -->
+        <span class="text-info">Title: </span><span>{{ book.title}}</span>
+        <br>
+        <span class="text-info">Publisher: </span><span>{{ book.publisher}}</span>
+        <br>
+        <span class="text-info">Publication Date: </span><span>{{ book.publication_date}}</span>
+        <br>
+    </p>
+    <hr>
+{% endblock %}
