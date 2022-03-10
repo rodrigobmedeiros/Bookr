@@ -37,9 +37,12 @@ def book_list(request):
 def book_detail(request, id):
 
     book = get_object_or_404(Book, pk=id)
+    average_rating, number_of_reviews = book.average_rating_number_of_reviews()
 
     context = {
-        'book': book
+        'book': book,
+        'average_rating': average_rating,
+        'number_of_reviews': number_of_reviews
     }
 
     return render(request, 'reviews/book_detail.html', context=context)
