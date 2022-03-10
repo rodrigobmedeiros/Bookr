@@ -11,21 +11,12 @@ def book_list(request):
     for book in books:
 
         reviews = book.review_set.all()
-        
-        if reviews:
-            book_rating = average_rating([
-                review.rating 
-                for review in reviews
-            ])
-        else:
-            book_rating = None
-
-        number_of_reviews = len(reviews)
+        average_rating, number_of_reviews = book.average_rating_number_of_reviews()
 
         book_list.append(
             {
                 'book': book, 
-                'book_rating': book_rating,
+                'book_rating': average_rating,
                 'number_of_reviews': number_of_reviews
             }
         )
