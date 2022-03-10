@@ -24,6 +24,18 @@ class Book(models.Model):
 
         return self.title
 
+    def average_rating_number_of_reviews(self):
+
+        reviews = self.review_set.all()
+
+        if not reviews:
+
+            return None 
+        
+        book_rating = sum([review.rating for review in reviews]) / len(reviews)
+
+        return round(book_rating), len(reviews)
+
 class Contributor(models.Model):
     """A contributor to a Book, e.g. author, editor, co-author."""
     first_names = models.CharField(max_length=50, help_text="The contributor's first name or names.")
