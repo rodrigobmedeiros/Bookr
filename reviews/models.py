@@ -30,7 +30,7 @@ class Book(models.Model):
 
         if not reviews:
 
-            return None 
+            return None, 0
         
         book_rating = sum([review.rating for review in reviews]) / len(reviews)
 
