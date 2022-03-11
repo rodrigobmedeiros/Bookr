@@ -1,0 +1,43 @@
+<form method="post" id="publisher_form" novalidate><input type="hidden" name="csrfmiddlewaretoken" value="moJ4Re9N34bImvtY4j1tuhQQpbac8yo6zxjqqsbO5TmcBBx8s6zHhQyHObaVoYiz">
+    <div>
+        <fieldset class="module aligned ">
+            <div class="form-row field-name">
+                    <div>
+                            <label class="required" for="id_name">Name:</label>
+                                <input type="text" name="name" value="Pocket Books" class="vTextField" maxlength="50" required id="id_name">
+                            <div class="help">The name of the Publisher.</div>
+                    </div>
+            </div>
+            <div class="form-row field-website">
+                    <div>
+                            <label class="required" for="id_website">Website:</label>
+                                <p class="url">Currently: <a href="https://pocketbookssampleurl.com">https://pocketbookssampleurl.com</a><br>Change: <input type="url" name="website" value="https://pocketbookssampleurl.com" class="vURLField" maxlength="200" required id="id_website"></p>
+                            <div class="help">The Publisher's website.</div>
+                    </div>
+            </div>
+            <div class="form-row field-email">
+                    <div>
+                            <label class="required" for="id_email">Email:</label>
+                                <input type="email" name="email" value="pocketbook@example.com" class="vTextField" maxlength="254" required id="id_email">
+                            <div class="help">The Publisher's email address.</div>
+                    </div>
+            </div>
+        </fieldset>
+        <div class="submit-row">
+        <input type="submit" value="Save" class="default" name="_save">
+            <p class="deletelink-box"><a href="/admin/reviews/publisher/9/delete/" class="deletelink">Delete</a></p>
+        <input type="submit" value="Save and add another" name="_addanother">
+        <input type="submit" value="Save and continue editing" name="_continue">
+        </div>
+            <script 
+                id="django-admin-form-add-constants"
+                src="/static/admin/js/change_form.js"
+                async>
+            </script>
+            <script 
+                id="django-admin-prepopulated-fields-constants"
+                src="/static/admin/js/prepopulate_init.js"
+                data-prepopulated-fields="[]">
+            </script>
+    </div>
+</form>
