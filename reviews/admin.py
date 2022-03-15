@@ -5,7 +5,8 @@ class BookAdmin(admin.ModelAdmin):
 
     # use this list to define fields or methods to be displayed in Admin Site for an especific model.
     list_display = ('title', 'isbn13')
-    list_filter = ('publisher', )
+    list_filter = ('publisher', 'publication_date')
+    date_hierarchy = 'publication_date'
 
     def isbn13(self, obj):
         
