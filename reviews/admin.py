@@ -21,10 +21,18 @@ class BookAdmin(admin.ModelAdmin):
             f'{obj.isbn[12:]}'
         )
 
+class ReviewAdmin(admin.ModelAdmin):
+    fields = (
+        'content',
+        'rating',
+        'creator',
+        'book'
+    )
+
 # Register your models here.
 admin.site.register(Publisher)
 admin.site.register(Contributor)
 # By default the register uses the ModelAdmin class.
 admin.site.register(Book, admin_class=BookAdmin)
 admin.site.register(BookContributor)
-admin.site.register(Review)
+admin.site.register(Review, admin_class=ReviewAdmin)
