@@ -22,11 +22,9 @@ class BookAdmin(admin.ModelAdmin):
         )
 
 class ReviewAdmin(admin.ModelAdmin):
-    fields = (
-        'content',
-        'rating',
-        'creator',
-        'book'
+    fieldsets = (
+        ('Linkage', {'fields': ('creator', 'book')}),
+        ('Review content', {'fields': ('content', 'rating')})
     )
 
 # Register your models here.
