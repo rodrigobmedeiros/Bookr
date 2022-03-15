@@ -1,9 +1,27 @@
 from django.contrib import admin
 from reviews.models import Publisher, Contributor, Book, BookContributor, Review
 
+class BookAdmin(admin.ModelAdmin):
+
+    # use this list to define fields or methods to be displayed in Admin Site for an especific model.
+    list_display = ('title', 'isbn13')
+
+    def isbn13(self, obj):
+        
+        """ 9780316769174 => 978-0-31-676917-4"""
+
+        return (
+            f'{obj.isbn[0:3]}-'
+            f'{obj.isbn[3:4]}-'
+            f'{obj.isbn[4:6]}-'
+            f'{obj.isbn[6:12]}-'
+            f'{obj.isbn[12:]}'
+        )
+
 # Register your models here.
 admin.site.register(Publisher)
 admin.site.register(Contributor)
-admin.site.register(Book)
+# By default the register uses the ModelAdmin class.
+admin.site.register(Book, admin_class=BookAdmin)
 admin.site.register(BookContributor)
 admin.site.register(Review)
