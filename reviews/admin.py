@@ -27,9 +27,14 @@ class ReviewAdmin(admin.ModelAdmin):
         ('Review content', {'fields': ('content', 'rating')})
     )
 
+class ContributorAdmin(admin.ModelAdmin):
+    list_display = ('last_names', 'first_names')
+    list_filter = ('last_names', )
+    search_fields = ('first_names__startswith', 'last_names')
+
 # Register your models here.
 admin.site.register(Publisher)
-admin.site.register(Contributor)
+admin.site.register(Contributor, admin_class=ContributorAdmin)
 # By default the register uses the ModelAdmin class.
 admin.site.register(Book, admin_class=BookAdmin)
 admin.site.register(BookContributor)
