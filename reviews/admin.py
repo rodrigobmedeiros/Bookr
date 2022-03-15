@@ -7,6 +7,7 @@ class BookAdmin(admin.ModelAdmin):
     list_display = ('title', 'isbn13')
     list_filter = ('publisher', 'publication_date')
     date_hierarchy = 'publication_date'
+    search_fields = ('title', 'isbn__exact', 'publisher__name')
 
     def isbn13(self, obj):
         
