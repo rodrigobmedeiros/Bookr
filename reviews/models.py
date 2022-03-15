@@ -1,3 +1,4 @@
+import re
 from django.contrib import auth
 from django.conf import settings
 from django.db import models
@@ -42,9 +43,18 @@ class Contributor(models.Model):
     last_names = models.CharField(max_length=50, help_text="The contributor's last name or names.")
     email = models.EmailField(help_text="The contact email for the contributor.")
 
+    def initialled_name(self):
+        """Treatment concatenating contributor's last names with , and initial firt names with upper case."""
+        
+        initial_first_names = ''.join([
+            name[0].upper() for name in self.first_names.split(' ')
+        ])
+
+        return ', '.join([self.last_names, initial_first_names])
+
     def __str__(self):
 
-        return self.first_names
+        return self.initialled_name()
 
 class BookContributor(models.Model):
     """Estabilish many to many relationship between Books and Contributors"""
