@@ -1,18 +1,9 @@
-from django.contrib import admin
-from django.contrib.admin import AdminSite
+from django import contrib
 from reviews.models import Publisher, Contributor, Book, BookContributor, Review
 
-# This class
-class BookrAdminSite(AdminSite):
-    title_header = 'Bookr Admin'
-    site_header = 'Bookr administration'
-    index_title = 'Bookr site admin'
-
-admin_site = BookrAdminSite(name='bookr')
-
 # Register your models here.
-admin_site.register(Publisher)
-admin_site.register(Contributor)
-admin_site.register(Book)
-admin_site.register(BookContributor)
-admin_site.register(Review)
+contrib.admin.site.register(Publisher)
+contrib.admin.site.register(Contributor)
+contrib.admin.site.register(Book)
+contrib.admin.site.register(BookContributor)
+contrib.admin.site.register(Review)
