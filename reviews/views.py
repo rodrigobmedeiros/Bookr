@@ -39,3 +39,7 @@ def book_detail(request, id):
     }
 
     return render(request, 'reviews/book_detail.html', context=context)
+
+def main(request):
+
+    return render(request, 'base.html')
