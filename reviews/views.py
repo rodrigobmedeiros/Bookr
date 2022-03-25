@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .utils import average_rating
 from .models import Book
+from .forms import SearchForm
 
 
 def book_list(request):
@@ -39,6 +40,28 @@ def book_detail(request, id):
     }
 
     return render(request, 'reviews/book_detail.html', context=context)
+
+def book_search(request):
+
+    search_form = SearchForm(request.GET)
+
+    if search_form.is_valid():
+        
+        if search_form.search != '':
+            
+            search_in = search_form.cleaned_data.get('search_in', 'title')
+
+            if search_in == 'title':
+
+                books = Book.objects.filter(title__icontains=search_form.search)
+
+    context = {
+        'form': search_form, 
+        'books': books
+    }
+
+
+
 
 def main(request):
 
