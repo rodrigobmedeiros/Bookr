@@ -1,8 +1,8 @@
 from django import forms
 
 SEARCH_CHOICES = (
-    ('1', 'Title'),
-    ('2', 'Contributor')
+    ('title', 'title'),
+    ('contributor', 'contributor')
 )
 
 class SearchForm(forms.Form):
