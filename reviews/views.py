@@ -43,23 +43,14 @@ def book_detail(request, id):
 
 def book_search(request):
 
-    search_form = SearchForm(request.GET)
+    search_form = SearchForm()
 
-    if search_form.is_valid():
-        
-        if search_form.search != '':
-            
-            search_in = search_form.cleaned_data.get('search_in', 'title')
-
-            if search_in == 'title':
-
-                books = Book.objects.filter(title__icontains=search_form.search)
 
     context = {
         'form': search_form, 
-        'books': books
     }
 
+    return render(request, 'reviews/book_search.html', context=context)
 
 
 

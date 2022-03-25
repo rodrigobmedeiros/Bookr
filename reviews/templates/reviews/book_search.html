@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title%}
+    <title>Book Search</title>
+{% endblock %}
+
+{% block content%}
+    <br>
+    <form method="POST" action="{% url 'book_search' %}">
+
+        {{ form.as_p }}
+        <br>
+        <submit class="btn btn-outline-success active" type="submit">Search</submit>
+
+    </form>
+    <br>
+{% endblock %}
