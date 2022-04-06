@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 
 {% block title%}
-    <title>Book Search</title>
+    <title>{{ title }}</title>
 {% endblock %}
 
 {% block content%}
+    <h2>Search for Books</h2>
     <br>
     <form method="POST" action="{% url 'book_search' %}">
 
@@ -14,4 +15,17 @@
 
     </form>
     <br>
+
+    <h3> 
+        {% if form.search.value != "" %}
+            Search Results for <em>{{ form.search.value }}</em>
+        {% endif %}
+    </h3>
+
+    <br>
+    {% for book in books %}
+
+        <span>Title: </span><span>{{ book.title }}</span>
+
+    {% endfor %}
 {% endblock %}
