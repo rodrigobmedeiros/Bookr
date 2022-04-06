@@ -52,6 +52,11 @@ class Contributor(models.Model):
 
         return ', '.join([self.last_names, initial_first_names])
 
+    def complete_name(self):
+        """Treatment concatenating first and last names, configuring the complete name of a contributor."""
+
+        return ' '.join([self.first_names, self.last_names])
+
     def __str__(self):
 
         return self.initialled_name()
