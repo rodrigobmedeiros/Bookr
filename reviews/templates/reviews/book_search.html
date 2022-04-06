@@ -21,11 +21,18 @@
             Search Results for <em>{{ form.search.value }}</em>
         {% endif %}
     </h3>
+    <ul class="list-group">
+        {% if books|length > 0 %}
+            {% for book in books %}
+                <li class="list-group-item">
+                    <span class="text-info">Title: </span><span>{{ book.title }}</span>
+                    <br>
+                    <span class="text-info">Contributors: </span><span>{{ book.contributors }}</span>
+                    <br>
+                </li>
+            {% endfor %}
+        {% endif %}
+    </ul>
 
     <br>
-    {% for book in books %}
-
-        <span>Title: </span><span>{{ book.title }}</span>
-
-    {% endfor %}
 {% endblock %}
