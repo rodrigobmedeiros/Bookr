@@ -43,14 +43,16 @@ def book_detail(request, id):
 
 def book_search(request):
 
+    title = 'Book Search'
+    books = []
     
-    
+    print(request.GET)
+    print(request.POST)
+
     if request.method == 'GET':
 
         search_form = SearchForm(request.GET)
-        title = 'Book Search'
-        books = []
-
+        
         if search_form.is_valid():
 
             search_text = search_form.cleaned_data.get('search')
@@ -60,7 +62,18 @@ def book_search(request):
                 books = Book.objects.filter(title__icontains=search_text)
                 title = f'Search Results for "{search_text}"'
 
-        
+    elif request.method == 'POST':
+
+        search_form = SearchForm(request.POST)
+
+        if search_form.is_valid():
+
+            search_text = search_form.cleaned_data.get('search')
+
+            if search_text != '':
+
+                books = Book.objects.filter(title__icontains=search_text)
+                title = f'Search Results for "{search_text}"'
 
     context = {
         'form': search_form,
