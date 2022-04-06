@@ -5,14 +5,14 @@
 {% endblock %}
 
 {% block content%}
+    <h1>{{ request.method }}</h1>
     <h2>Search for Books</h2>
     <br>
-    <form method="POST" action="{% url 'book_search' %}">
-
+    <form method="POST" action="{% url 'book_search'%}">
+        {% csrf_token %}
         {{ form.as_p }}
         <br>
-        <submit class="btn btn-outline-success active" type="submit">Search</submit>
-
+        <button class="btn btn-outline-success active" type="submit">Search</button>
     </form>
     <br>
 
@@ -21,6 +21,7 @@
             Search Results for <em>{{ form.search.value }}</em>
         {% endif %}
     </h3>
+
     <ul class="list-group">
         {% if books|length > 0 %}
             {% for book in books %}
