@@ -37,6 +37,13 @@ class Book(models.Model):
 
         return round(book_rating), len(reviews)
 
+    def contributors_names(self):
+
+        contributors = self.contributors.all()
+        contributors_names = [contributor.complete_name() for contributor in contributors]
+
+        return ', '.join(contributors_names)
+
 class Contributor(models.Model):
     """A contributor to a Book, e.g. author, editor, co-author."""
     first_names = models.CharField(max_length=50, help_text="The contributor's first name or names.")
