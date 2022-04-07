@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
+from django.db.models import Q
 from .utils import average_rating
-from .models import Book
+from .models import Book, Contributor
 from .forms import SearchForm
 
 
@@ -46,9 +47,6 @@ def book_search(request):
     title = 'Book Search'
     books = []
     
-    print(request.GET)
-    print(request.POST)
-
     if request.method == 'GET':
 
         search_form = SearchForm(request.GET)
@@ -72,8 +70,19 @@ def book_search(request):
 
             if search_text != '':
 
-                books = Book.objects.filter(title__icontains=search_text)
                 title = f'Search Results for "{search_text}"'
+                search_in = search_form.cleaned_data.get('search_in')
+
+                if search_in == 'title':
+
+                    books = Book.objects.filter(title__icontains=search_text)
+                    
+                elif search_in == 'contributor':
+
+                    complex_search_query = Q(first_names__icontains=search_text) | Q(last_names__icontains=search_text)
+                    contributors = Contributor.objects.filter(complex_search_query)
+
+                    _ = [books.extend(contributor.book_set.all()) for contributor in contributors]
 
     context = {
         'form': search_form,
