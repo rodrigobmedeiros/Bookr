@@ -1,3 +1,4 @@
+from telnetlib import SE
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
 from .utils import average_rating
@@ -50,40 +51,31 @@ def book_search(request):
     if request.method == 'GET':
 
         search_form = SearchForm(request.GET)
-        
-        if search_form.is_valid():
-
-            search_text = search_form.cleaned_data.get('search')
-
-            if search_text != '':
-
-                books = Book.objects.filter(title__icontains=search_text)
-                title = f'Search Results for "{search_text}"'
 
     elif request.method == 'POST':
 
         search_form = SearchForm(request.POST)
 
-        if search_form.is_valid():
+    if search_form.is_valid():
 
-            search_text = search_form.cleaned_data.get('search')
+        search_text = search_form.cleaned_data.get('search')
+        search_in = search_form.cleaned_data.get('search_in')
 
-            if search_text != '':
+        if search_text != '':
 
-                title = f'Search Results for "{search_text}"'
-                search_in = search_form.cleaned_data.get('search_in')
+            title = f'Search Results for "{search_text}"'
 
-                if search_in == 'title':
+            if search_in in ['title', '']:
 
-                    books = Book.objects.filter(title__icontains=search_text)
-                    
-                elif search_in == 'contributor':
+                books = Book.objects.filter(title__icontains=search_text)
 
-                    complex_search_query = Q(first_names__icontains=search_text) | Q(last_names__icontains=search_text)
-                    contributors = Contributor.objects.filter(complex_search_query)
+            elif search_in == 'contributor':
 
-                    _ = [books.extend(contributor.book_set.all()) for contributor in contributors]
+                complex_search_query = Q(first_names__icontains=search_text) | Q(last_names__icontains=search_text)
+                contributors = Contributor.objects.filter(complex_search_query)
 
+                _ = [books.extend(contributor.book_set.all()) for contributor in contributors]
+                
     context = {
         'form': search_form,
         'books': books,
