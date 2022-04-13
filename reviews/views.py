@@ -1,8 +1,10 @@
+from operator import ge
 from telnetlib import SE
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
+from django.contrib import messages
 from .utils import average_rating
-from .models import Book, Contributor
+from .models import Book, Contributor, Publisher
 from .forms import SearchForm, PublisherForm
 
 
@@ -100,9 +102,37 @@ def main(request):
 
     return render(request, 'base.html')
 
-def publishers(request, pk):
+def publisher_edit(request, pk=None):
 
-    form = PublisherForm()
+    if pk is not None:
+
+        publisher = get_object_or_404(Publisher, pk=pk)
+    
+    else:
+
+        publisher = None
+
+    if request.method == 'POST':
+
+        form = PublisherForm(request.POST, instance=publisher)
+        
+        if form.is_valid():
+        
+            updated_publisher = form.save()
+
+            if publisher is None:
+
+                messages.success(request, f'Publisher {updated_publisher} was created!')
+
+            else:
+
+                messages.success(request, f'Publisher {updated_publisher} was updated!')
+
+            redirect('publisher_edit', updated_publisher.pk)
+
+    else:
+
+        form = PublisherForm(instance=publisher)
 
     context = {
         'form': form
