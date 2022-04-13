@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
 from .utils import average_rating
 from .models import Book, Contributor
-from .forms import SearchForm
+from .forms import SearchForm, PublisherForm
 
 
 def book_list(request):
@@ -99,3 +99,13 @@ def book_search(request):
 def main(request):
 
     return render(request, 'base.html')
+
+def publishers(request, pk):
+
+    form = PublisherForm()
+
+    context = {
+        'form': form
+    }
+
+    return render(request, 'reviews/publishers.html', context=context)
