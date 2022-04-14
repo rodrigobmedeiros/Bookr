@@ -128,7 +128,7 @@ def publisher_edit(request, pk=None):
 
                 messages.success(request, f'Publisher {updated_publisher} was updated!')
 
-            redirect('publisher_edit', updated_publisher.pk)
+            return redirect('publisher_edit', updated_publisher.pk)
 
     else:
 
