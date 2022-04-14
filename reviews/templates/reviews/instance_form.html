@@ -1,0 +1,35 @@
+{% extends 'reviews/base.html' %}
+
+{% block title %}
+    <title>
+        {% if instance == None %}
+            New Publisher
+        {% else %}
+            Editing Publisher {{ instance.name }}
+        {% endif %}
+    </title>
+{% endblock %}
+
+{% block content%}
+
+
+    <h2>
+        {% if instance == None %}
+            New Publisher
+        {% else %}
+            Editing Publisher <em>{{ instance.name }}</em>
+        {% endif %}
+    </h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <br>
+        <button class="btn btn-outline-success active" type="submit">
+            {% if instance == None %}
+                Create
+            {% else %}
+                Save
+            {% endif %}
+        </button>
+    </form>
+{% endblock %}
