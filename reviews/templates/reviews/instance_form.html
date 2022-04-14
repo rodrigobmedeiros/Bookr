@@ -17,7 +17,7 @@
         {% if instance == None %}
             New Publisher
         {% else %}
-            Editing Publisher <em>{{ instance.name }}</em>
+            Editing {{ model_type }} <em>{{ instance.name }}</em>
         {% endif %}
     </h2>
     <form method="POST">
