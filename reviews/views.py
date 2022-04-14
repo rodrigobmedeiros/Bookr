@@ -135,7 +135,9 @@ def publisher_edit(request, pk=None):
         form = PublisherForm(instance=publisher)
 
     context = {
-        'form': form
+        'form': form,
+        'instance': publisher,
+        'model_type': "Publisher"
     }
 
-    return render(request, 'reviews/publishers.html', context=context)
+    return render(request, 'reviews/instance_form.html', context=context)
