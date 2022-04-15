@@ -3,9 +3,9 @@
 {% block title %}
     <title>
         {% if instance == None %}
-            New Publisher
+            New {{ model_type }}
         {% else %}
-            Editing Publisher {{ instance.name }}
+            Editing {{ model_type }} {{ instance.name }}
         {% endif %}
     </title>
 {% endblock %}
