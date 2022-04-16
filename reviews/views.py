@@ -142,7 +142,7 @@ def publisher_edit(request, pk=None):
 
     return render(request, 'reviews/instance_form.html', context=context)
 
-def review_edit(request):
+def review_edit(request, book_pk, review_pk):
 
     form = ReviewForm()
     review = None
