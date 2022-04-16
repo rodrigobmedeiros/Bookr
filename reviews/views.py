@@ -5,7 +5,7 @@ from django.db.models import Q
 from django.contrib import messages
 from .utils import average_rating
 from .models import Book, Contributor, Publisher
-from .forms import SearchForm, PublisherForm
+from .forms import SearchForm, PublisherForm, ReviewForm
 
 
 def book_list(request):
@@ -138,6 +138,19 @@ def publisher_edit(request, pk=None):
         'form': form,
         'instance': publisher,
         'model_type': "Publisher"
+    }
+
+    return render(request, 'reviews/instance_form.html', context=context)
+
+def review_edit(request):
+
+    form = ReviewForm()
+    review = None
+
+    context = {
+        'form': form,
+        'instance': review,
+        'model_type': "Review"
     }
 
     return render(request, 'reviews/instance_form.html', context=context)
