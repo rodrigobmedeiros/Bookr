@@ -15,7 +15,7 @@
 
     <h2>
         {% if instance == None %}
-            New Publisher
+            New {{ model_type }}
         {% else %}
             Editing {{ model_type }} <em>{{ instance.name }}</em>
         {% endif %}
