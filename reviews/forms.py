@@ -1,5 +1,5 @@
 from django import forms
-from .models import Publisher
+from .models import Publisher, Review
 
 SEARCH_CHOICES = (
     ('title', 'title'),
@@ -16,3 +16,15 @@ class PublisherForm(forms.ModelForm):
     class Meta:
         model = Publisher
         fields = "__all__"
+
+class ReviewForm(forms.ModelForm):
+
+    class Meta:
+        model = Review
+        exclude = (
+            'date_edited',
+            'book'
+        )
+        widgets = {
+            'rating': forms.NumberInput(attrs={'max': 5, 'min': 0})
+        }
