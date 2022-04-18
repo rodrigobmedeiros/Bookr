@@ -5,7 +5,10 @@
         {% if instance == None %}
             New {{ model_type }}
         {% else %}
-            Editing {{ model_type }} {{ instance.name }}
+            Editing {{ model_type }} 
+            {% if related_instance and related_model_type %}
+                {{ instance.creator }}: {{ related_instance.title }}
+            {% endif %}
         {% endif %}
     </title>
 {% endblock %}
@@ -17,14 +20,17 @@
         {% if instance == None %}
             New {{ model_type }}
         {% else %}
-            Editing {{ model_type }} <em>{{ instance.name }}</em>
+            Editing {{ model_type }} 
+            {% if related_instance and related_model_type %}
+                <em>{{ instance.creator }}: <p>{{ related_instance.title }}</p></em>
+            {% endif %}
         {% endif %}
     </h2>
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <br>
-        <button class="btn btn-outline-success active" type="submit">
+        <button class="btn btn-primary btn-sm active" type="submit">
             {% if instance == None %}
                 Create
             {% else %}
