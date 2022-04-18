@@ -1,10 +1,12 @@
 from operator import ge
 from telnetlib import SE
+from webbrowser import get
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
 from django.contrib import messages
+from django.utils.timezone import now
 from .utils import average_rating
-from .models import Book, Contributor, Publisher
+from .models import Book, Contributor, Publisher, Review
 from .forms import SearchForm, PublisherForm, ReviewForm
 
 
@@ -147,10 +149,43 @@ def review_edit(request, book_pk, review_pk=None):
     form = ReviewForm()
     review = None
 
+    book = get_object_or_404(Book, pk=book_pk)
+
+    if review_pk is not None:
+        review = get_object_or_404(Review.objects.filter(book=book), pk=review_pk)
+    else:
+        review = None
+
+    if request.method == 'POST':
+
+        form = ReviewForm(request.POST, instance=review)
+
+        if form.is_valid():
+
+            updated_review = form.save(commit=False)
+            updated_review.book = book 
+
+            if review is not None:
+
+                updated_review.date_edited = now()
+                messages.success(request, f'Review for {book.title} was edited!')
+
+            else:
+                messages.success(request, f'Review  for {book.title} was created!')
+            
+            updated_review.save()
+            return redirect('book_details', book.pk)
+
+    else:
+
+        form = ReviewForm(instance=review)
+
     context = {
         'form': form,
         'instance': review,
-        'model_type': "Review"
+        'model_type': "Review",
+        'related_model_type': "Book",
+        'related_instance': book
     }
 
     return render(request, 'reviews/instance_form.html', context=context)
