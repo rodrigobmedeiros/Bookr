@@ -1,14 +1,9 @@
-from operator import ge
-from telnetlib import SE
-from webbrowser import get
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
 from django.contrib import messages
 from django.utils.timezone import now
-from .utils import average_rating
 from .models import Book, Contributor, Publisher, Review
 from .forms import SearchForm, PublisherForm, ReviewForm
-
 
 def book_list(request):
 
@@ -145,9 +140,6 @@ def publisher_edit(request, pk=None):
     return render(request, 'reviews/instance_form.html', context=context)
 
 def review_edit(request, book_pk, review_pk=None):
-
-    form = ReviewForm()
-    review = None
 
     book = get_object_or_404(Book, pk=book_pk)
 
