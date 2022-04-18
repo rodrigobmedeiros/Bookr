@@ -21,6 +21,7 @@
         <br>
         <span class="text-info">Number of reviews: </span><span>{{ number_of_reviews }}</span>
         <br>
+        <a class="btn btn-primary btn-sm active" role="button" aria-pressed="true" href="{% url 'review_create' book.id %}">Add Review</a>
         <hr>
         <h3>Reviews Comments</h3>
         <ul class="list-group">
@@ -38,6 +39,7 @@
                     <br>
                     <span class="text-info">Creator: </span><span>{{ review.creator.username }}</span>
                     <br>
+                    <a href="{% url 'review_edit' book.id review.id%}">Edit Review</a>
                 </li>
             {% endfor %}
         </ul>
