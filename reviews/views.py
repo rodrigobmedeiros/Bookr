@@ -1,9 +1,14 @@
+from django.forms import ImageField
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
 from django.contrib import messages
 from django.utils.timezone import now
+from django.core.files import File
+from django.core.files.images import ImageFile
 from .models import Book, Contributor, Publisher, Review
-from .forms import SearchForm, PublisherForm, ReviewForm
+from .forms import SearchForm, PublisherForm, ReviewForm, BookMediaForm
+from PIL import Image
+from io import BytesIO
 
 def book_list(request):
 
@@ -181,3 +186,51 @@ def review_edit(request, book_pk, review_pk=None):
     }
 
     return render(request, 'reviews/instance_form.html', context=context)
+
+def book_media(request, book_pk):
+    
+    book = get_object_or_404(Book, pk=book_pk)
+
+    if request.method == 'POST':
+
+        form = BookMediaForm(request.POST, request.FILES, instance=book)
+
+        if form.is_valid():
+            
+            # As I want to resize the image 
+            book: Book = form.save(commit=False)
+
+            image = Image.open(book.cover)
+            image.thumbnail((300, 300))
+
+            image_data = BytesIO()
+            image.save(fp=image_data, format=image.format)
+            image_file = ImageFile(image_data)
+
+            book.cover.save(book.cover.name, image_file)
+
+            book.save()
+
+            # if uploaded_image is not None:
+
+            #    image = Image.open(uploaded_image)
+            #    size = (300, 300)
+            #    image.thumbnail(size)
+            #    book.cover = File(image)
+            
+            # print(book.cover)
+
+            # book.save()
+            messages.success(request, f'Book {book} was updated!')
+            redirect('example', book.pk)
+
+    else:
+
+        form = BookMediaForm()
+
+    context = {
+        'form': form,
+        'instance': book        
+    }
+
+    return render(request, 'reviews/media-example.html', context=context)
