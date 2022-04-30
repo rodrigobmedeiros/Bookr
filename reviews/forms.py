@@ -1,5 +1,5 @@
 from django import forms
-from .models import Publisher, Review
+from .models import Publisher, Review, Book
 
 SEARCH_CHOICES = (
     ('title', 'title'),
@@ -28,3 +28,12 @@ class ReviewForm(forms.ModelForm):
         widgets = {
             'rating': forms.NumberInput(attrs={'max': 5, 'min': 0})
         }
+
+class BookMediaForm(forms.ModelForm):
+
+    class Meta:
+        model = Book
+        fields = (
+            'cover',
+            'sample'
+        )
