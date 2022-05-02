@@ -197,32 +197,25 @@ def book_media(request, book_pk):
 
         if form.is_valid():
             
-            # As I want to resize the image 
+            # As I want to resize the image let commit=False.
             book: Book = form.save(commit=False)
 
+            # Open image to manipulate it.
             image = Image.open(book.cover)
+
+            # Resize image considering 300 x 300 pixles maximun value.
             image.thumbnail((300, 300))
 
+            # Use BytesIO to work with "files" in memory before update the model.
             image_data = BytesIO()
             image.save(fp=image_data, format=image.format)
             image_file = ImageFile(image_data)
 
             book.cover.save(book.cover.name, image_file)
-
             book.save()
 
-            # if uploaded_image is not None:
-
-            #    image = Image.open(uploaded_image)
-            #    size = (300, 300)
-            #    image.thumbnail(size)
-            #    book.cover = File(image)
-            
-            # print(book.cover)
-
-            # book.save()
             messages.success(request, f'Book {book} was updated!')
-            redirect('example', book.pk)
+            return redirect('book_details', book.pk)
 
     else:
 
