@@ -211,6 +211,7 @@ def book_media(request, book_pk):
             image.save(fp=image_data, format=image.format)
             image_file = ImageFile(image_data)
 
+            # Save updated cover and model
             book.cover.save(book.cover.name, image_file)
             book.save()
 
@@ -223,7 +224,9 @@ def book_media(request, book_pk):
 
     context = {
         'form': form,
-        'instance': book        
+        'instance': book,
+        'model_type': "Book",
+        'is_file_uploaded': True
     }
 
-    return render(request, 'reviews/media-example.html', context=context)
+    return render(request, 'reviews/instance_form.html', context=context)
