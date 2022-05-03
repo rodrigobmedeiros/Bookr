@@ -1,0 +1,210 @@
+          <ELEMENT NAME="EQUIPMENT" ENABLED="TRUE" RESPONSIBILITY="#Responsibility" MILESTONE="DR30">
+            <CSVNAME>P78_Hull_AM_EQUIPMENT.XLSX</CSVNAME>
+            <KEYFIELDS>
+              <FIELD>TAG</FIELD>
+            </KEYFIELDS>
+            <FIELDSTOCOMPLETE>
+                <FIELD  RESPONSIBILITY="#Discipline" MILESTONE="DR30">TAG</FIELD>
+                <FIELD RESPONSIBILITY="#Discipline" MILESTONE="DR30">Discipline</FIELD>
+                <FIELD RESPONSIBILITY="#Discipline" MILESTONE="DR30">Family</FIELD>
+                <FIELD RESPONSIBILITY="#Discipline" MILESTONE="#Discipline|{'HVAC','Mechanical','Process',''}:DR30,{'Automation','Electrical', 'Marine System'}:DR60, {'Safety'}:DR90" FILTER="(Discipline IN ('','Automation') and Family IN ('Push Button')) or (Discipline IN ('','Electrical') and Family IN ('','Panel','Lampost','Push button')) or (Discipline IN ('','HVAC') and Family IN ('Pump','Forced circulation evaporator','Package unit')) or (Discipline IN ('','Marine System') and Family IN ('Anchorage','Mooring','Offloading','Package unit','Pump','Compressor','Filter','Heat exchanger','Drum','Motor','Separator','Tank')) or (Discipline IN ('','Mechanical') and Family IN ('Motor','Handling','Turbine','Velocity Variator')) or (Discipline IN ('','Process') and Family IN ('Pump','Compressor','Deaerator','Dehydrator','Filter','Separator','Tank','Flare','Tower','Eletrostatic treater','Heat exchanger','Drum')) or (Discipline IN ('','Safety') and Family IN ('Equipment rack','Embarkation','Breathing apparatus housing','Embarkation ladder','Fire Extinguisher','Push button','Floodlight','Illumination','Floor marking','Horn','Detector'))">TYPE</FIELD>
+                <FIELD RESPONSIBILITY="#Discipline" MILESTONE="DR30">MODULE</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="#Discipline|{'Process','Marine System',''}:DR30,{'Telecom'}:DR60, {'Safety'}:DR90" FILTER="Discipline IN ('','Safety','Process','Marine System','Telecom')">Capacity</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Safety','HVAC') and Family IN ('','Pump','Emergency shower and eyewash')">Rated_Capacity</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND"  RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','HVAC') and ((Family IN ('','Fans and Blowers','Heat Exchanger')) or (Family IN ('','Package unit') and TYPE IN ('','Condensing unit','Air conditoning unit')))">Air_Flow_Rate</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Family IN ('','Heat exchanger','WHRU','Furnace','Forced circulation evaporator') or (Family IN ('','Package') and TYPE IN ('','CONDENSING UNIT','AIR CONDITIONING UNIT'))">Thermal_Load</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','HVAC') and Family IN ('','Compressors')">Chilled_Water_Flow_Rate</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="(Discipline IN ('','HVAC') and Family IN ('','Compressors')) or (Family IN ('Package','') and TYPE IN ('','AIR CONDITIONING UNIT'))">Cold_Water_Flow_Rate</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="(Discipline IN ('','Mechanical','Marine System') and Family IN ('','Motor')) or (Discipline IN ('','HVAC') and Family IN ('','Package') and TYPE IN ('','CONDENSING UNIT','AIR CONDITIONING UNIT','AIR HANDLING UNIT'))">Cooling_Type</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','HVAC') and (Family IN ('','Fans and Blowers') or (Family IN ('','Package') and TYPE IN ('','AIR HANDLING UNIT')))">Shape</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','HVAC') and Family IN ('','Package') and TYPE IN ('','AIR HANDLING UNIT')">Filtration_Degree_Of_Associated_Filters</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="(Discipline IN ('','HVAC') and Family IN ('','Package') and TYPE IN ('','AIR HANDLING UNIT')) or (Discipline IN ('','Process','Marine System') and Family IN ('','Heater'))">Eletric_Power</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','HVAC') and ((Family IN ('','Package') and TYPE IN ('','AIR CONDITIONING UNIT','AIR HANDLING UNIT')) or Family IN ('','Fans and Blowers'))">Static_Pressure</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','HVAC') and Family IN ('','Package') and TYPE IN ('','AIR HANDLING UNIT')">Water_Flow_Rate</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Process','Marine System') and Family IN ('','Pump')">Material_Of_Construction_Class</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Process','Marine System') and Family IN ('','Pump')">Construction_Type</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Process','Marine System') and Family IN ('','Pump')">Pump_Housing</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Process','Marine System') and Family IN ('','Pump')">Manufacturing_Standard</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="(Discipline IN ('','Process','Marine System') and Family IN ('','Pump','Compressors')) or (Discipline IN ('','Electrical','Marine System','Mechanical') and Family IN ('','Motor'))">Rotation</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Process','Marine System') and Family IN ('','Pump')">Protection_And_Monitoring_System</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="(Discipline IN ('','Electrical') and Family IN ('','Generator','Motor')) or (Discipline IN ('','Automation','HVAC')) or (Discipline IN ('','Telecom')) or (Discipline IN ('','Telecom') and Family IN ('','PAGA') and TYPE IN ('','AMPLIFIER','LOUDSPEAKER','EMERGENCY LAMP')) or (Discipline IN ('','Electrical') and Family IN ('','Panel') and TYPE IN ('','FREQUENCY CONVERTER','COMPUTER PANEL','CONTROL PANEL','SWITCHES PANEL','SOFTSTARTER PANEL')) or (Discipline IN ('','Safety') and Family IN ('','Davit','Panel','Other Equipment','Floodlight')) or (Discipline IN ('','Mechanical') and Family IN ('','Elevator','Motor','Handling','Other Equipment','Turbine','Velocity Variator')) or (Discipline IN ('','Marine System') and Family IN ('','Motor','Separator','Package')) or (Discipline IN ('','Process') and Family IN ('','Agitator','Pump','Compressors','Dehydratator','Filter','Air Dryer','Fans and Blowers','Electrostatic Precipitator'))">Power</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="(Discipline IN ('','Process','Marine System') and Family IN ('','Pump')) or (Discipline IN ('','Mechanical') and Family IN ('','Cargo Handling') and TYPE IN ('','CRANE'))">Type_of_Driver</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Process','Marine System') and Family IN ('','Pump')">Assembly_Type</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Process','Marine System') and Family IN ('','Deaerator','Filter','Tower')">Height_Tan_To_Tan</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Process') and Family IN ('','Deaerator')">Diameter_Tower</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="(Discipline IN ('','Process') and Family IN ('','Deaerator','Eductor','Ejector')) or (Discipline IN ('','Marine System') and Family IN ('','Tank'))">Design_Min_Pressure</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="(Discipline IN ('','Process') and Family IN ('','Agitator','Pump','Degasificator','Deaerator','Cyclone','Dehydratator','Eductor','Ejector','Filter','Vessel','Furnace','Hydrocyclone','Pig Launcher','Other Equipment','Pig Receiver','Air Dryer','Separator','Fans and Blowers','Tower','Electrostatic Precipitator','Package','Vessel','Heater')) or (Discipline IN ('','Marine System') and Family IN ('','Hydrocyclone','Pump','Filter','Tank','Heater','Vessel','Separator','Package'))">Design_Max_Pressure</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="(Discipline IN ('','Process') and Family IN ('','Agitator','Pump','Degasificator','Deaerator','Cyclone','Dehydratator','Eductor','Ejector','Filter','Vessel','Furnace','Hydrocyclone','Pig Launcher','Other Equipment','Pig Receiver','Air Dryer','Separator','Fans and Blowers','Tower','Electrostatic Precipitator','Package','Vessel','Heater')) or (Discipline IN ('','Marine System') and Family IN ('','Pump','Filter','Tank','Heater','Vessel','Separator','Package'))">Maximum_Design_Temperature</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="(Discipline IN ('','Process','Marine System') and Family IN ('','Separator','Vessel')) or (Discipline IN ('','Process','Marine System') and Family IN ('','Heat Exchanger') and TYPE IN ('','SHELL AND TUBE')) or (Discipline IN ('','Process') and Family IN ('','Degasificator','Dehydratator','Hydrocyclone','Electrostatic Precipitator'))">Length_Tan_To_Tan</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="(Discipline IN ('','Process') and Family IN ('','Degasificator','Dehydratator','Deaerator','Filter','Hydrocyclone','Separator','Tank','Tower','Electrostatic Precipitator')) or (Discipline IN ('','Safety') and Family IN ('','Foam Monitor','Water Monitor','International connection','Hydrant','Other Equipment','Eductor'))">Diameter</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="(Discipline IN ('','Automation') and Family IN ('','Skid')) or (Discipline IN ('','Process') and Family IN ('','Agitator','Pump','Compressors','Degasificator','Dehydratator','Eductor','Ejector','Filter','Pig Launcher','Pig Receiver','Separator','Tower','Electrostatic Precipitator','Heat Exchanger','Vessel','Heater')) or (Discipline IN ('','Marine System','Process','Safety') and Family IN ('','Tank')) or (Discipline IN ('','Marine System') and Family IN ('','Pump','Compressors','Filter','Heater','Heat Exchanger','Vessel','Separator'))">Area_Adjust_Factor</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="(Discipline IN ('','Process') and Family IN ('','Degasificator','Cyclone','Dehydratator','Eductor','Ejector','Vessel','Hydrocyclone','Waste Heat Recovery','Separator','Heat Exchanger','Vessel')) or (Discipline IN ('','Marine System') and Family IN ('','Heat Exchanger','Vessel','Separator'))">Equip_Orientation</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Process','Marine System') and Family IN ('','Filter')">Filtering_Element</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Process','Marine System') and Family IN ('','Filter','Separator','Vessel')">Thickness</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="#Discipline|{'','Process'}:DR30, {'Marine System','Electrical','Safety'}:DR60,{'Safety'}:DR90" FILTER="(Discipline IN ('','Process','Marine System') and Family IN ('','Drum','Filter','Separator','Heat exchanger','Tank')) or (Discipline IN ('','Process') and Family IN ('','Eletrostatic treater')) or (Discipline IN ('','Safety') and Family IN ('','Equipment rack','Lifevest rack','Fixed water/foam cannon','Emergency shower and eyewash','Embarkation','Embarkation ladder','Hydrant','International connection','Tank','Windsock')) or (Discipline IN ('','Electrical') and Family IN ('','Junction Box','Lampost'))">Material</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="(Discipline IN ('','Process','Marine System') and Family IN ('','Filter')) or (Discipline IN ('','Process','Marine System') and Family IN ('','Heat Exchanger') and TYPE IN ('','SHELL AND TUBE'))">Shell_Housing</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Process','Marine System') and Family IN ('','Separator','Electrostatic Precipitator','Vessel')">Requires_Thermal_Insulation</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Process','Marine System') and Family IN ('','Tank')">Heating_System</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30">Height</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30">Length</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30">Width</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Process') and Family IN ('','Electrostatic Precipitator')">Electrostatic_Coalescers</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Process','Marine System') and Family IN ('','Heat Exchanger') and TYPE IN ('','SHELL AND TUBE')">TEMA_Designation</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Process','Marine System') and Family IN ('','Heat Exchanger') and TYPE IN ('','SHELL AND TUBE')">Tube_Length</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Process','Marine System') and Family IN ('','Heat Exchanger') and TYPE IN ('','SHELL AND TUBE')">Tube_Configuration</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Process','Marine System') and Family IN ('','Heat Exchanger') and TYPE IN ('','SHELL AND TUBE')">Shell_Diameter</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Process','Marine System') and Family IN ('','Heat Exchanger') and TYPE IN ('','SHELL AND TUBE')">Tube_Diameter</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Process','Marine System') and Family IN ('','Heat Exchanger') and TYPE IN ('','SHELL AND TUBE')">Tube_Material</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Process','Marine System') and Family IN ('','Heat Exchanger') and TYPE IN ('','SHELL AND TUBE')">Shell_Quantity</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Process','Marine System') and Family IN ('','Heat Exchanger')">Cold_Side_Fluid</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Process','Marine System') and Family IN ('','Heat Exchanger')">Hot_Side_Fluid</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Process')">NR13_Category</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Process')">NR13_Class</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Process')">NR13_Group</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Process')">NR13</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="(Discipline IN ('','Marine System','Process')) or (Discipline IN ('','Automation') and Family IN ('','Skid')) or  (Discipline IN ('','Mechanical') and Family IN ('','Motor','Turbine')) or (Discipline IN ('','Safety') and Family IN ('','Pump','Extinguicher','Other Equipment','Tank'))">FLUID</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Process')">Cladding</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Process')">Clad_Material</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="(Discipline IN ('','Process')) or (Discipline IN ('','Safety') and Family IN ('','Other Equipment'))  or (Discipline IN ('','Marine System') and Family IN ('','Motor')) or (Discipline IN ('','Mechanical') and Family IN ('','Motor','Turbine','Velocity Variator','Cargo Handling'))">Design_Standard</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="(Discipline IN ('','Process')) or (Discipline IN ('','Electrical') and Family IN ('','Lampost')) or (Discipline IN ('','Automation') and Family IN ('','Panel','Junction Box','Distributed control system (DCS)'))">Service</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Process')">Special_Service</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="(Discipline IN ('','Mechanical','Marine System') and Family IN ('','Motor')) or (Discipline IN ('','Safety') and Family IN ('','Cylinder Battery'))">Cylinder_Quantity</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="#Discipline|{'','Automation','Electrical'}:DR60,{'Safety'}:DR90" FILTER="(Discipline IN ('','Automation','Electrical','Safety') and Family IN ('','Push Button')) or (Discipline IN ('','Safety') and Family IN ('','Foam concentrate drums', 'Lifevest rack','Fixed water/foam cannon','Emergency shower and eyewash','Embarkation','Breathing apparatus housing','Fire Extinguisher','Foam proportioner','Emergency phone','Battery of CO2 cylinders','Push button','Maritime Evacuation systems','Tank','Alarm','Horn')) or (Discipline IN ('Safety') and Family IN ('Alarm') and TYPE IN ('Visual alarm'))">COLOR</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Safety') and Family IN ('','Foam concentrate drums','Tank')">VOLUME</FIELD>                
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Safety') and Family in ('','Foam Monitor','Water Monitor','Hydrant')">Pressure</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Safety') and Family in ('','Foam Monitor','Water Monitor','Hydrant','International connection')">Coating_Status</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Safety') and Family in ('','Embarkation') and TYPE IN ('','INFLATABLE BOAT')">Boat_Type</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Safety') and Family in ('','Embarkation')">Number_Of_People</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Safety','Marine System') and Family IN ('','Embarkation','Pull-in')">Speed</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Safety') and Family in ('','Breathing apparatus housing') AND TYPE IN ('','Breathing apparatus')">Inclination</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Safety') and Family in ('','Manual CO2 triggering remote station')">Fire_Extinguishing_Capacity</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Safety') and Family IN ('','Eductor')">Pressure_Class</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Safety') and Family IN ('','Eductor')">Max_Pressure_Loss</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="#discipline|{'Automation','Electrical','Telecom',''}:DR60,{'Safety'}:DR90" FILTER="(Discipline IN ('','Electrical') and Family IN ('','Generator','Panel','Transformer','Junction Box','Lampost','Neutral Grounding Resistors','Push Button')) or (Discipline IN ('','Telecom')) or (Discipline IN ('','Automation') and Family IN ('','Push Button')) or (Discipline IN ('','Safety') and Family IN ('','Emergency phone','Push Button','Floodlight','Illumination','Floor marking','Windsock','Horn','Detector')) or (Discipline IN ('','Safety') and Family IN ('', 'Alarm') and TYPE IN ('Fire alarm sound'))">Ingression_Protection</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Electrical') and Family IN ('','Panel','Generator','Motor','Transformer')">Phases</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Electrical') and Family IN ('','Panel')">Cable_Entry_Position</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Mechanical') and Family IN ('','Cargo Handling') and TYPE IN ('','CRANE')">Max_Radius</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30">Status</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30">Hazardous_Area_Group</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30">Hazardous_Area_Zone</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30">Estimated_Contingency_Factor</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30">Description</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline NOT IN ('','Electrical')">Manufacturer</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30">Supply_Responsibility</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30">Included_On_Module_Lifting</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30">Equip_Installed_In_Open_Area</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline NOT IN ('','Electrical')">Model</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30">Requires_FAT</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30">Design_DataSheet_Number</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline NOT IN ('','Electrical')">Serial_Number</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30">Operational_Weight</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30">Test_Weight</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30">DryWeight</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30">Operational_System</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Marine System') and Family IN ('','Heat Exchanger') and TYPE IN ('','SHELL AND TUBE')">Flow_Direction</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30" FILTER="Discipline IN ('','Marine System') and Family IN ('','Mooring','Pull-in')">Safe_Working_Load</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR30">PATH</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR60" FILTER="Discipline IN ('','Telecom') and Family IN ('','Antenna','Distribution box','Buzzer','Emergency position-indicating radio beacons (EPIRB)','Page Party Station','Signal lights','Power distribution panel for telecom','Access Point','Loudspeaker','Telephone')">Explosion_Category</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR60" FILTER="Discipline IN ('','Telecom') and Family IN ('','Antenna Coupler')">Angle</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR60" FILTER="Discipline IN ('','HVAC') and Family IN ('','Fans and Blowers')">Components_material</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR60" FILTER="Discipline IN ('','Electrical') and Family IN ('','Transformer')">Fan_power</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR60" FILTER="Discipline IN ('','Safety') and Family IN ('','Floor marking') and TYPE IN ('','Helideck markings')">Maximum_height</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR60" FILTER="Discipline IN ('','Electrical') and Family IN ('','Transformer')">Number_of_fans</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR60" FILTER="Discipline IN ('','Electrical') and Family IN ('','Lampost')">Number_of_lamps</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR60" FILTER="Discipline IN ('','Safety') and Family IN ('','Floor marking') ">Quantity</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR60">RM_number</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR60" FILTER="Discipline IN ('','Safety') and Family IN ('','Floodlight') ">Rotation_axis</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR60" FILTER="Discipline IN ('','Electrical') and Family IN ('','Generator')">RPM</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR60" FILTER="Discipline IN ('','Safety') and Family IN ('','International connection') ">Slope_Angle</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR60" FILTER="Discipline NOT IN ('','Electrical')">Supplier_Manufacturer_document_number</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR60" FILTER="Discipline IN ('','Marine System') and Family IN ('','Tank')">Tank_Roof_Type</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR60" FILTER="Discipline IN ('','Safety') and Family IN ('','Timer') ">Time_Delay</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR90" FILTER="Discipline IN ('','Safety') and Family IN ('','Detector') and TYPE IN ('','Point detector')">Detected_Gas</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR90" FILTER="Discipline IN ('','Safety') and Family IN ('','Detector')">Fire_Zone</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR90" FILTER="Discipline IN ('','Safety') and Family IN ('','Detector') and TYPE IN ('','Fuse plug detector')">Fusing_Temperature</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR90" FILTER="Discipline IN ('','Safety') and Family IN ('','Windsock')">Illumination</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR90" FILTER="Discipline IN ('','Safety') and Family IN ('','Detector','Hydrant')">Reach_Radius</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR90" FILTER="Discipline IN ('','Safety') and Family IN ('','Alarm') and TYPE IN ('','Fire alarm sound')">Sound_Power</FIELD>
+                <FIELD NOTIN="NA;TBD;NOT_FOUND" RESPONSIBILITY="#Discipline" MILESTONE="DR90" FILTER="Discipline IN ('','Safety') and Family IN ('','Floodlight','Detector') ">Temperature_Class</FIELD>
+            </FIELDSTOCOMPLETE>
+          </ELEMENT>
+          <ELEMENT NAME="INSTRUMENT" ENABLED="TRUE" RESPONSIBILITY="Automation" MILESTONE="DR30">
+            <CSVNAME>P78_Hull_AM_INSTRUMENT.XLSX</CSVNAME>
+            <KEYFIELDS>
+              <FIELD>TAG</FIELD>
+            </KEYFIELDS>
+            <FIELDSTOCOMPLETE>
+              <FIELD RESPONSIBILITY="Automation" MILESTONE="DR30">TAG</FIELD>
+              <FIELD RESPONSIBILITY="Automation" MILESTONE="DR30">Type</FIELD>
+              <FIELD RESPONSIBILITY="Automation" MILESTONE="DR30">Service</FIELD>
+              <FIELD RESPONSIBILITY="Automation" MILESTONE="#Type|{'','Level Indicating Transmit (LIT)'}:DR60, {'Pressure Indicator (PI)','Pressure Differential Indicating Transmit (PDIT)'}:DR90" FILTER="Type in ('','Level Indicating Transmit (LIT)','Pressure Indicator (PI)','Pressure Differential Indicating Transmit (PDIT)')">Has_diaphragm_seal</FIELD>
+              <FIELD RESPONSIBILITY="Automation" MILESTONE="#Type|{'','Flow Sensor (FE)','Flow Indicating Transmit (FIT)','Valve'}:DR60, {'PressureIndicating Transmit (PIT)','Temperature Indicating Transmit'}:DR90" FILTER="Type in ('','Flow Sensor (FE)','Flow Indicating Transmit (FIT)','Valve','PressureIndicating Transmit (PIT)','Temperature Indicating Transmit')">Ergonomy_Category</FIELD>
+              <FIELD RESPONSIBILITY="Automation" MILESTONE="#Type|{'','Level Gauge (LG)'}:DR60, {'PressureIndicating Transmit (PIT)'}:DR90" FILTER="Type in ('','Level Gauge (LG)','PressureIndicating Transmit (PIT)')">Type_of_Block_Valve</FIELD>
+              <FIELD RESPONSIBILITY="Automation" MILESTONE="DR60">Estimated_Contingency_Factor</FIELD>
+              <FIELD RESPONSIBILITY="Automation" MILESTONE="DR60">Description</FIELD>
+              <FIELD RESPONSIBILITY="Automation" MILESTONE="DR60">Design_datasheet_number</FIELD>
+              <FIELD RESPONSIBILITY="Automation" MILESTONE="DR60">RM_number</FIELD>
+              <FIELD RESPONSIBILITY="Automation" MILESTONE="DR60">Operational_weight</FIELD>
+              <FIELD RESPONSIBILITY="Automation" MILESTONE="DR60">Test_weight</FIELD>
+              <FIELD RESPONSIBILITY="Automation" MILESTONE="DR60">Dry_weight</FIELD>
+              <FIELD RESPONSIBILITY="Automation" MILESTONE="DR60">Designed_by</FIELD>
+              <FIELD RESPONSIBILITY="Automation" MILESTONE="DR60">Status</FIELD>
+              <FIELD RESPONSIBILITY="Automation" MILESTONE="DR60">Requires_FAT</FIELD>
+              <FIELD RESPONSIBILITY="Automation" MILESTONE="DR90">Construction_By</FIELD>
+              <FIELD RESPONSIBILITY="Automation" MILESTONE="DR90">Is_part_of_skid</FIELD>
+              <FIELD RESPONSIBILITY="Automation" MILESTONE="DR90">Supply_responsibility</FIELD>
+              <FIELD RESPONSIBILITY="Automation" MILESTONE="DR90">Model</FIELD>
+              <FIELD RESPONSIBILITY="Automation" MILESTONE="DR90">Manufacturer_datasheet_number</FIELD>
+              <FIELD RESPONSIBILITY="Automation" MILESTONE="DR90">Serial_number</FIELD>
+              <FIELD RESPONSIBILITY="Automation" MILESTONE="DR90">Operational_subsystem</FIELD>
+            </FIELDSTOCOMPLETE>
+          </ELEMENT>
+          <ELEMENT NAME="PIPERUN" ENABLED="TRUE" ALLOW_DUPLICATED="TRUE" RESPONSIBILITY="Piping" MILESTONE="DR30">
+            <CSVNAME>P78_Hull_AM_PIPERUN.XLSX</CSVNAME>
+            <KEYFIELDS>
+              <FIELD>TAG</FIELD>
+            </KEYFIELDS>
+            <FIELDSTOCOMPLETE>
+              <FIELD RESPONSIBILITY="Piping" MILESTONE="DR30">TAG</FIELD>
+			  <FIELD IN="OK" RESPONSIBILITY="Piping" MILESTONE="DR30">TAG_OK</FIELD>
+              <FIELD RESPONSIBILITY="Piping" MILESTONE="DR30">Nominal_Diameter</FIELD>
+              <FIELD NOTIN="TBD;NOT_FOUND;" RESPONSIBILITY="Piping" MILESTONE="DR30">Insulation_thickness</FIELD>
+              <FIELD RESPONSIBILITY="Piping" MILESTONE="DR30">Insulation_Purpose</FIELD>
+              <FIELD RESPONSIBILITY="Piping" MILESTONE="DR30">FLUID</FIELD>
+              <FIELD RESPONSIBILITY="Piping" MILESTONE="DR30">Heat_Trace_Medium</FIELD>
+              <FIELD NOTIN="TBD;NOT_FOUND;" RESPONSIBILITY="Piping" MILESTONE="DR30">Design_max_pressure</FIELD>
+              <FIELD NOTIN="TBD;NOT_FOUND;" RESPONSIBILITY="Piping" MILESTONE="DR30">Requires_flexibility_analysis</FIELD>
+              <FIELD RESPONSIBILITY="Piping" MILESTONE="DR30">Requires_Heat_Tracing</FIELD>
+              <FIELD RESPONSIBILITY="Piping" MILESTONE="DR30">Requires_thermal_insulation</FIELD>
+              <FIELD RESPONSIBILITY="Piping" MILESTONE="DR30">Interior_coating_requirement</FIELD>
+              <FIELD RESPONSIBILITY="Piping" MILESTONE="DR30">Sequential</FIELD>
+              <FIELD NOTIN=" =0/0;NOT_FOUND;" RESPONSIBILITY="Piping" MILESTONE="DR30">Piping_Materials_Class</FIELD>
+              <FIELD NOTIN="TBD;NOT_FOUND;" RESPONSIBILITY="Piping" MILESTONE="DR30">Status</FIELD>
+              <FIELD NOTIN="TBD;NOT_FOUND;" RESPONSIBILITY="Piping" MILESTONE="DR30">Maximum_design_temperature</FIELD>
+              <FIELD RESPONSIBILITY="Piping" MILESTONE="DR60">Inspection_class</FIELD>
+              <FIELD RESPONSIBILITY="Piping" MILESTONE="DR60">Supply_responsibility</FIELD>
+              <FIELD RESPONSIBILITY="Piping" MILESTONE="DR60">Operational_pressure</FIELD>	 
+              <FIELD RESPONSIBILITY="Piping" MILESTONE="DR60">Designed_by</FIELD>			  
+              <FIELD RESPONSIBILITY="Piping" MILESTONE="DR60">NACE_Requirement</FIELD>
+              <FIELD RESPONSIBILITY="Piping" MILESTONE="DR60">Operational_system</FIELD>
+              <FIELD RESPONSIBILITY="Piping" MILESTONE="DR60">Operational_subsystem_SSOP</FIELD>
+              <FIELD RESPONSIBILITY="Piping" MILESTONE="DR60">Design_min_temperature</FIELD>
+              <FIELD RESPONSIBILITY="Piping" MILESTONE="DR60">Normal_operational_temperature</FIELD>
+              <FIELD RESPONSIBILITY="Piping" MILESTONE="DR90">Painting_Scheme</FIELD>
+              <FIELD RESPONSIBILITY="Piping" MILESTONE="DR90">Construction_By</FIELD>
+              <FIELD RESPONSIBILITY="Piping" MILESTONE="DR90">COLOR</FIELD>
+              <FIELD RESPONSIBILITY="Piping" MILESTONE="DR90">Skid_ID</FIELD>
+              <FIELD RESPONSIBILITY="Piping" MILESTONE="DR90">Flexibility_analysis_report_number</FIELD>
+              <FIELD RESPONSIBILITY="Piping" MILESTONE="DR90">Piping_plan_number</FIELD>
+              <FIELD RESPONSIBILITY="Piping" MILESTONE="DR90">Isometric_number</FIELD>
+              <FIELD RESPONSIBILITY="Piping" MILESTONE="DR90">Spool_number</FIELD>
+              <FIELD RESPONSIBILITY="Piping" MILESTONE="DR90">Sample_collecting_pressure</FIELD>
+              <FIELD RESPONSIBILITY="Piping" MILESTONE="DR90">Desgin_min_pressure</FIELD>
+              <FIELD RESPONSIBILITY="Piping" MILESTONE="DR90">PRESSURE_NORM</FIELD>
+              <FIELD RESPONSIBILITY="Piping" MILESTONE="DR90">Requires_painting</FIELD>
+              <FIELD RESPONSIBILITY="Piping" MILESTONE="DR90">Hydrostatic_Testing_System</FIELD>
+              <FIELD RESPONSIBILITY="Piping" MILESTONE="DR90">Sample_collecting_temperature</FIELD>
+              <FIELD RESPONSIBILITY="Piping" MILESTONE="DR90">Heat_tracing_temperature</FIELD>
+              <FIELD RESPONSIBILITY="Piping" MILESTONE="DR90">Operational_Flow_Rate</FIELD>
+            </FIELDSTOCOMPLETE>
+          </ELEMENT>
