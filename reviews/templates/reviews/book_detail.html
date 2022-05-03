@@ -14,36 +14,37 @@
     <span class="text-info">Publication Date: </span><span>{{ book.publication_date}}</span>
     <br>
     {% if not reviews %}
-        <a class="btn btn-primary btn-sm active" role="button" aria-pressed="true" href="{% url 'review_create' book.id %}">Add Review</a>
         <hr>
         <h3>Be the first one to write a review.</h3>
+        <a class="btn btn-primary btn-sm active" role="button" aria-pressed="true" href="{% url 'review_create' book.id %}">Add Review</a>
     {% else %}
         <span class="text-info">Overall Rating: </span><span class="badge badge-primary badge-pill">{{ average_rating }}</span>
         <br>
         <span class="text-info">Number of reviews: </span><span>{{ number_of_reviews }}</span>
         <br>
-        <a class="btn btn-primary btn-sm active" role="button" aria-pressed="true" href="{% url 'review_create' book.id %}">Add Review</a>
         <h3>Reviews Comments</h3>
+        <hr>
+        <ul class="list-group">
+            {% for review in reviews %}
+                <!-- class: list-group-item -> Make divisions between list items automatically -->
+                <li class="list-group-item">
+                    <!-- class: text-info -> Highlight text information with a default light blue color -->
+                    <span class="text-info">Review comment: </span><span>{{ review.content}}</span>
+                    <br>
+                    <span class="text-info">Created on: </span><span>{{ review.date_created }}</span>
+                    <br>
+                    <span class="text-info">Modified on: </span><span>{{ review.date_edited }}</span>
+                    <br>
+                    <span class="text-info">Rating: </span><span class="badge badge-primary badge-pill">{{ review.rating }}</span>
+                    <br>
+                    <span class="text-info">Creator: </span><span>{{ review.creator.username }}</span>
+                    <br>
+                    <a href="{% url 'review_edit' book.id review.id%}">Edit Review</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <br>
+        <a class="btn btn-primary btn-sm active" role="button" aria-pressed="true" href="{% url 'review_create' book.id %}">Add Review</a>
     {% endif %}
-    <hr>
-    <ul class="list-group">
-        {% for review in reviews %}
-            <!-- class: list-group-item -> Make divisions between list items automatically -->
-            <li class="list-group-item">
-                <!-- class: text-info -> Highlight text information with a default light blue color -->
-                <span class="text-info">Review comment: </span><span>{{ review.content}}</span>
-                <br>
-                <span class="text-info">Created on: </span><span>{{ review.date_created }}</span>
-                <br>
-                <span class="text-info">Modified on: </span><span>{{ review.date_edited }}</span>
-                <br>
-                <span class="text-info">Rating: </span><span class="badge badge-primary badge-pill">{{ review.rating }}</span>
-                <br>
-                <span class="text-info">Creator: </span><span>{{ review.creator.username }}</span>
-                <br>
-                <a href="{% url 'review_edit' book.id review.id%}">Edit Review</a>
-            </li>
-        {% endfor %}
-    </ul>
     
 {% endblock %}
