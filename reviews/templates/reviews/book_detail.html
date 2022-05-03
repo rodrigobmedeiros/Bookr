@@ -6,7 +6,7 @@
     <!-- class: list-group-item -> Make divisions between list items automatically -->
     <hr>
     {% if book.cover %}
-        <img src="{{ MEDIA_URL }}/{{ book.cover.name }}">
+        <img src="{{ book.cover.url }}">
         <br>
     {% endif %}
     <!-- class: text-info -> Highlight text information with a default light blue color -->
@@ -16,10 +16,15 @@
     <br>
     <span class="text-info">Publication Date: </span><span>{{ book.publication_date}}</span>
     <br>
+    {% if book.sample %}
+        <span class="text-info">Sample: </span><a href="{{ book.sample.url }}">Download</a>
+        <br>
+    {% endif %}
     {% if not reviews %}
         <hr>
         <h3>Be the first one to write a review.</h3>
         <a class="btn btn-primary btn-sm active" role="button" aria-pressed="true" href="{% url 'review_create' book.id %}">Add Review</a>
+        <a class="btn btn-primary btn-sm active" role="button" aria-pressed="true" href="{% url 'book_media' book.id %}">Media</a>
     {% else %}
         <span class="text-info">Overall Rating: </span><span class="badge badge-primary badge-pill">{{ average_rating }}</span>
         <br>
@@ -49,6 +54,7 @@
         </ul>
         <br>
         <a class="btn btn-primary btn-sm active" role="button" aria-pressed="true" href="{% url 'review_create' book.id %}">Add Review</a>
+        <a class="btn btn-primary btn-sm active" role="button" aria-pressed="true" href="{% url 'book_media' book.id %}">Media</a>
     {% endif %}
     
 {% endblock %}
