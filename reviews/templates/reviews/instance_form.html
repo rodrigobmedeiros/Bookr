@@ -4,6 +4,8 @@
     <title>
         {% if instance == None %}
             New {{ model_type }}
+        {% elif model_type == "Book" %}
+            Editing {{ instance }} 
         {% else %}
             Editing {{ model_type }} 
             {% if related_instance and related_model_type %}
@@ -19,14 +21,22 @@
     <h2>
         {% if instance == None %}
             New {{ model_type }}
+        {% elif model_type == "Book" %}
+            Editing <em>{{ instance }}</em> 
         {% else %}
+            <p>Entrei no else</p>
             Editing {{ model_type }} 
             {% if related_instance and related_model_type %}
                 <em>{{ instance.creator }}: <p>{{ related_instance.title }}</p></em>
             {% endif %}
         {% endif %}
     </h2>
-    <form method="POST">
+
+    {% if is_file_upload %}
+        <form method="POST" enctype="multipart/form-data">
+    {% else %}
+        <form method="POST" >
+    {% endif %}
         {% csrf_token %}
         {{ form.as_p }}
         <br>
