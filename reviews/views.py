@@ -220,13 +220,13 @@ def book_media(request, book_pk):
 
     else:
 
-        form = BookMediaForm()
+        form = BookMediaForm(instance=book)
 
     context = {
         'form': form,
         'instance': book,
         'model_type': "Book",
-        'is_file_uploaded': True
+        'is_file_upload': True
     }
 
     return render(request, 'reviews/instance_form.html', context=context)
