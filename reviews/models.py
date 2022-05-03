@@ -25,7 +25,7 @@ class Book(models.Model):
 
     def __str__(self):
 
-        return self.title
+        return f'{self.title} ({self.isbn})'
 
     def average_rating_number_of_reviews(self):
 
