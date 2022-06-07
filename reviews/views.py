@@ -1,14 +1,17 @@
-from django.forms import ImageField
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
 from django.contrib import messages
 from django.utils.timezone import now
-from django.core.files import File
+from django.contrib.auth.decorators import login_required, user_passes_test
+from django.core.exceptions import PermissionDenied
 from django.core.files.images import ImageFile
 from .models import Book, Contributor, Publisher, Review
 from .forms import SearchForm, PublisherForm, ReviewForm, BookMediaForm
 from PIL import Image
 from io import BytesIO
+
+def is_staff_user(user):
+    return user.is_staff
 
 def book_list(request):
 
@@ -104,6 +107,7 @@ def main(request):
 
     return render(request, 'base.html')
 
+@user_passes_test(is_staff_user)
 def publisher_edit(request, pk=None):
 
     if pk is not None:
@@ -144,12 +148,22 @@ def publisher_edit(request, pk=None):
 
     return render(request, 'reviews/instance_form.html', context=context)
 
+
+@login_required
 def review_edit(request, book_pk, review_pk=None):
 
     book = get_object_or_404(Book, pk=book_pk)
 
     if review_pk is not None:
         review = get_object_or_404(Review.objects.filter(book=book), pk=review_pk)
+
+        user = request.user
+
+        if not user.is_staff and review.creator.id != user.id:
+
+            raise PermissionDenied
+
+
     else:
         review = None
 
@@ -187,6 +201,7 @@ def review_edit(request, book_pk, review_pk=None):
 
     return render(request, 'reviews/instance_form.html', context=context)
 
+@login_required
 def book_media(request, book_pk):
     
     book = get_object_or_404(Book, pk=book_pk)
