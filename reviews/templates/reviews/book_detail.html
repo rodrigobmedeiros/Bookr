@@ -22,9 +22,9 @@
     {% endif %}
     {% if not reviews %}
         <hr>
-        <h3>Be the first one to write a review.</h3>
-        <a class="btn btn-primary btn-sm active" role="button" aria-pressed="true" href="{% url 'review_create' book.id %}">Add Review</a>
-        <a class="btn btn-primary btn-sm active" role="button" aria-pressed="true" href="{% url 'book_media' book.id %}">Media</a>
+        {% if user.is_authenticated %}
+            <h3>Be the first one to write a review.</h3>
+        {% endif %}
     {% else %}
         <span class="text-info">Overall Rating: </span><span class="badge badge-primary badge-pill">{{ average_rating }}</span>
         <br>
@@ -48,13 +48,17 @@
                     <br>
                     <span class="text-info">Creator: </span><span>{{ review.creator.username }}</span>
                     <br>
-                    <a href="{% url 'review_edit' book.id review.id%}">Edit Review</a>
+                    {% if request.user.id == review.creator.id %}
+                        <a href="{% url 'review_edit' book.id review.id%}">Edit Review</a>
+                    {% endif %}
                 </li>
             {% endfor %}
         </ul>
         <br>
-        <a class="btn btn-primary btn-sm active" role="button" aria-pressed="true" href="{% url 'review_create' book.id %}">Add Review</a>
-        <a class="btn btn-primary btn-sm active" role="button" aria-pressed="true" href="{% url 'book_media' book.id %}">Media</a>
+    {% endif %}
+    {% if user.is_authenticated %}
+            <a class="btn btn-primary btn-sm active" role="button" aria-pressed="true" href="{% url 'review_create' book.id %}">Add Review</a>
+            <a class="btn btn-primary btn-sm active" role="button" aria-pressed="true" href="{% url 'book_media' book.id %}">Media</a>
     {% endif %}
     
 {% endblock %}
