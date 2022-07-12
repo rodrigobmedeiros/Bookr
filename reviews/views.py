@@ -73,6 +73,7 @@ def book_detail(request, id):
 
 def book_search(request):
 
+    user: User = request.user
     # To start the view, default values were defined for title and books
     title = 'Book Search'
     books = []
@@ -94,6 +95,21 @@ def book_search(request):
         search_in = search_form.cleaned_data.get('search_in')
 
         if search_text != '':
+            
+            # Include search options into a list to be persisted into a session.
+            if user.is_authenticated:
+
+                max_search_history_length = 10
+                search_history: list = request.session.get('search_history', [])
+                search_options = [search_text, search_in]
+
+                if search_options in search_history:
+                    search_history.pop(search_history.index(search_options))
+                
+                search_history.insert(0, search_options)
+                search_history = search_history[:max_search_history_length]
+
+                request.session['search_history'] = search_history
 
             title = f'Search Results for "{search_text}"'
 
