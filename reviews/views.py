@@ -3,6 +3,7 @@ from django.db.models import Q
 from django.contrib import messages
 from django.utils.timezone import now
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.auth.models import User
 from django.core.exceptions import PermissionDenied
 from django.core.files.images import ImageFile
 from .models import Book, Contributor, Publisher, Review
@@ -37,12 +38,14 @@ def book_list(request):
 
 def book_detail(request, id):
 
+    user: User = request.user
+
     book = get_object_or_404(Book, pk=id)
     average_rating, number_of_reviews = book.average_rating_number_of_reviews()
     reviews = book.review_set.all()
 
     # Include logic for authenticated users
-    if request.user.is_authenticaded:
+    if user.is_authenticated:
 
         max_viewed_books_length = 10
         viewed_books: list = request.session.get('viewed_books', [])
