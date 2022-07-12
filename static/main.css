@@ -16,3 +16,20 @@ body {
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Libre Baskerville', serif;
 }
+
+.flex_row {
+    display: flex;
+    border: 2px black;
+}
+
+.flex_row > div {
+    flex: 1;
+}
+
+.infocell {
+    border: 2px;
+    border-radius: 5px 25px;
+    background-color: white;
+    padding: 5px;
+    margin: 20px 5px 5px 5px;
+}
