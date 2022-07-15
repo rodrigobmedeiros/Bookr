@@ -18,9 +18,10 @@ from django.contrib import admin
 from django.conf import settings
 from django.urls import path, include
 from bookr.views import profile
+from bookr_admin.admin import admin_site
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin_site.urls),
     path('', include('reviews.urls')),
     path('accounts/', include(('django.contrib.auth.urls', 'auth'), namespace='accounts')),
     path('accounts/profile/', profile, name='profile')
