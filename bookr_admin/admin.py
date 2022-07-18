@@ -18,6 +18,13 @@ class BookrAdminCustom(admin.AdminSite):
         # put everything together to return as a complete list os urls patterns.
         return url_patterns
 
+    def each_context(self, request):
+
+        context = super().each_context(request)
+        context['username'] = request.user.username
+
+        return context
+
     # example method to create a custom view to admin site
     def profile_view(self, request):
         request.current_app = self.name 
