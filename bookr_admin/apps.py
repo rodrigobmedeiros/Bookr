@@ -8,5 +8,5 @@ class BookrAdminConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'bookr_admin'
 
-class BookrAdminConfig(AdminConfig):
-    default_site = 'bookr_admin.admin.BookrAdmin'
+class BookrAdminCustomConfig(AdminConfig):
+    default_site = 'bookr_admin.admin.BookrAdminCustom'
