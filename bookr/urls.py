@@ -18,7 +18,6 @@ from django.contrib import admin
 from django.conf import settings
 from django.urls import path, include
 from bookr.views import profile
-from bookr_admin.admin import admin_site
 
 urlpatterns = [
     path('admin/', admin.site.urls),
