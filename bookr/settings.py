@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # Project APPs
     'reviews.apps.ReviewsConfig',
     'filter_demo',
+    'book_management',
 
     # Third-party APPs
     'bootstrap4',
