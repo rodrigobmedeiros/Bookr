@@ -20,7 +20,8 @@ from .views import (
     BookUpdateView, 
     FormSuccessView, 
     FormDeleteView, 
-    BookCreateView
+    BookCreateView,
+    BookRecordDetailView
 )
 
 urlpatterns = [
@@ -29,5 +30,6 @@ urlpatterns = [
     path('delete_success', FormDeleteView.as_view(), name='form_delete'),
     path('book_record_create', BookCreateView.as_view(), name='book_create'),
     path('book_record_update/<int:pk>', BookUpdateView.as_view(), name='book_update'),
-    path('book_record_delete/<int:pk>', BookDeleteView.as_view(), name='book_delete')
+    path('book_record_delete/<int:pk>', BookDeleteView.as_view(), name='book_delete'),
+    path('book_detail/<int:pk>', BookRecordDetailView.as_view(), name='book_detail')
 ]
