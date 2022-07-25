@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views import View
-from django.views.generic.edit import FormView, CreateView
+from django.views.generic.edit import FormView, CreateView, UpdateView
 
 from .forms import BookForm
 from .models import Book
@@ -32,3 +32,12 @@ class BookCreateView(CreateView):
     template_name = 'book_form.html'
     success_url = '/book_management/entry_success'
 
+
+class BookUpdateView(UpdateView):
+    model = Book
+    fields  = [
+        'name',
+        'author'
+    ]
+    template_name = 'book_form.html'
+    success_url = '/book_management/entry_success'
