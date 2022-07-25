@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views import View
-from django.views.generic.edit import FormView, CreateView, UpdateView
+from django.views.generic.edit import FormView, CreateView, UpdateView, DeleteView
 
 from .forms import BookForm
 from .models import Book
@@ -23,6 +23,11 @@ class FormSuccessView(View):
     def get(self, request, *args,  **Kwargs):
         return HttpResponse("Book record saved successfully")
 
+class FormDeleteView(View):
+
+    def get(self, request, *args,  **Kwargs):
+        return HttpResponse("Book record deleted successfully")
+
 class BookCreateView(CreateView):
     model = Book
     fields = [
@@ -41,3 +46,8 @@ class BookUpdateView(UpdateView):
     ]
     template_name = 'book_form.html'
     success_url = '/book_management/entry_success'
+
+class BookDeleteView(DeleteView):
+    model = Book
+    template_name = 'book_delete_form.html'
+    success_url = '/book_management/delete_success'
