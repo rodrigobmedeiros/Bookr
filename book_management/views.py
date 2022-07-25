@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views import View
+from django.views.generic import DetailView
 from django.views.generic.edit import FormView, CreateView, UpdateView, DeleteView
 
 from .forms import BookForm
@@ -51,3 +52,7 @@ class BookDeleteView(DeleteView):
     model = Book
     template_name = 'book_delete_form.html'
     success_url = '/book_management/delete_success'
+
+class BookRecordDetailView(DetailView):
+    model = Book
+    template_name = 'book_detail.html'
