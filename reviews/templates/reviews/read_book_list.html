@@ -1,6 +1,8 @@
-
-{% for book in books %}
-    <p>{{ book.title }}</p>
-{% empty %}
-    No recently read books found.
-{% endfor %}
+<p>
+    {% for book in books %}
+        {{ book.title }}
+        <br>
+    {% empty %}
+        No recently read books found.
+    {% endfor %}
+</p>
