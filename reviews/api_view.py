@@ -1,10 +1,11 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import Book
+from .models import Book, Publisher 
+from .serializers import BookSerializer, PublisherSerializer
 
 @api_view(['GET'])
-def first_api_view(request):
-    
-    books_into_database = Book.objects.count()
+def all_books(request):
 
-    return Response({'books_count': books_into_database})
+    books = Book.objects.all()
+    book_serializer = BookSerializer(books, many=True)
+    return Response(book_serializer.data)
