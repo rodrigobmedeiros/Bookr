@@ -26,6 +26,6 @@ urlpatterns = [
     path('books/<int:book_pk>/reviews/new/', views.review_edit, name='review_create'),
     path('books/<int:book_pk>/reviews/<int:review_pk>', views.review_edit, name='review_edit'),
     path('books/<int:book_pk>/media', views.book_media, name='book_media'),
-    path('api/book_count/', api_view.first_api_view, name='book_count'),
+    path('api/all_books/', api_view.all_books, name='all_booksk'),
     path('', views.main, name='main')
 ]
