@@ -66,6 +66,11 @@ class Contributor(models.Model):
 
         return ' '.join([self.first_names, self.last_names])
 
+    def number_of_contributions(self):
+        """Return the number of contributions for this contributor."""
+
+        return Book.objects.filter(contributors__first_names=self.first_names).count()
+
     def __str__(self):
 
         return self.initialled_name()
