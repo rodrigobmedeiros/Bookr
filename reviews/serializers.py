@@ -1,5 +1,10 @@
+from django.contrib.auth.models import User 
+from django.utils import timezone 
 from rest_framework import serializers
-from .models import Contributor, Publisher, Book, BookContributor
+from rest_framework.exceptions import NotAuthenticated, PermissionDenied 
+
+from .models import Book, Publisher, Review, Contributor, BookContributor
+from .utils import average_rating
 
 class PublisherSerializer(serializers.ModelSerializer):
     class Meta:
@@ -16,7 +21,9 @@ class BookSerializer(serializers.ModelSerializer):
             'title',
             'publication_date',
             'isbn',
-            'publisher'
+            'publisher',
+            'reviews',
+            'rating'
         ]
 
 class BookContributorSerializer(serializers.ModelSerializer):
